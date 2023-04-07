@@ -1,7 +1,7 @@
 const fs = require("fs");
 
 (() => {
-	const punks = JSON.parse(fs.readFileSync("../punks.json", "utf-8"));
+	const punks = JSON.parse(fs.readFileSync("punks.json", "utf-8"));
 	const allIssuances = JSON.parse(
 		fs.readFileSync("allIssuances.json", "utf-8")
 	);
