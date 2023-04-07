@@ -77,3 +77,27 @@ form button:hover {
 .check-locked-button {
   margin-top: 0.5rem;
 }
+
+.donate-github {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+}
+
+.donate-github a {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: #555;
+  margin-right: 10px;
+}
+
+.donate-github a i {
+  margin-right: 5px;
+}
