@@ -82,7 +82,7 @@ function displayLoadingBar() {
 }
 
 async function fetchStampData() {
-  const response = await fetch("find/stamp.json");
+  const response = await fetch("https://stampchain.io/stamp.json");
   const data = await response.json();
   return data;
 }
