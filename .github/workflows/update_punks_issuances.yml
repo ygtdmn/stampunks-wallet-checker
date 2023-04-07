@@ -30,13 +30,13 @@ jobs:
 
       - name: Update Last Update Block in index.html
         run: |
-          LAST_UPDATE_BLOCK=$(grep -oP "Last Update Block: \K\d+" ./find/punksIssuances.json)
-          sed -i "s/Last Update Block: [0-9]*/Last Update Block: $LAST_UPDATE_BLOCK/" index.html
+          LATEST_BLOCK=$(node -e "const getLatestBitcoinBlock = require('./find/getLatestBitcoinBlock.js'); getLatestBitcoinBlock().then(block => console.log(block));")
+          sed -i "s/Last Update Block: [0-9]*/Last Update Block: $LATEST_BLOCK/" index.html
 
       - name: Commit and push changes
         run: |
           git config --global user.name "GitHub Action"
           git config --global user.email "noreply@github.com"
-          git add ./find/punksIssuances.json ./find/fetchAllIssuances.js index.html
-          git commit -m "Update punksIssuances.json and index.html"
+          git add ./find/punksIssuances.json ./find/allIssuances.json ./find/fetchAllIssuances.js index.html
+          git commit -m "Update block"
           git push
