@@ -15,7 +15,7 @@ const fs = require("fs");
 					(issuance.description === punkDescription ||
 						issuance.description === punkDescriptionLower) &&
 					issuance.divisible === false &&
-					Number(issuance.quantity) <= 1
+					Number(issuance.quantity) == 1
 			);
 
 			if (matchingIssuance) {

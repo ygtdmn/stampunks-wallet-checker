@@ -5,6 +5,7 @@ const fs = require("fs");
 	const endBlock = 784361;
 	const concurrentFetches = 10;
 	const fileName = "allIssuances.json";
+	const resultsPerPage = 100;
 
 	// Read the existing data from the file
 	const existingData = fs.existsSync(fileName)
@@ -13,19 +14,34 @@ const fs = require("fs");
 
 	let allIssuances = existingData;
 
-	const fetchBlock = async (block) => {
-		console.log(`Fetching block ${block}...`);
-		const url = `https://xchain.io/api/issuances/${block}`;
+	const fetchBlock = async (block, page) => {
+		console.log(`Fetching block ${block}, page ${page}...`);
+		const url = `https://xchain.io/api/issuances/${block}/${page}/${resultsPerPage}`;
 		const response = await fetch(url);
 		const data = await response.json();
 		return data.data;
+	};
+
+	const fetchAllBlockPages = async (block) => {
+		let currentPage = 1;
+		let fetchedIssuances = [];
+		let hasNextPage = true;
+
+		while (hasNextPage) {
+			const blockData = await fetchBlock(block, currentPage);
+			hasNextPage = blockData.length === resultsPerPage;
+			fetchedIssuances = fetchedIssuances.concat(blockData);
+			currentPage++;
+		}
+
+		return fetchedIssuances;
 	};
 
 	for (let i = startBlock; i <= endBlock; i += concurrentFetches) {
 		const fetchPromises = [];
 
 		for (let j = 0; j < concurrentFetches && i + j <= endBlock; j++) {
-			fetchPromises.push(fetchBlock(i + j));
+			fetchPromises.push(fetchAllBlockPages(i + j));
 		}
 
 		const fetchedBlocks = await Promise.all(fetchPromises);
