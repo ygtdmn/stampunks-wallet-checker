@@ -1,8 +1,8 @@
 const fs = require("fs");
 
 (async () => {
-	const startBlock = 784338;
-	const endBlock = 784347;
+	const startBlock = 784347;
+	const endBlock = 784361;
 	const concurrentFetches = 10;
 	const fileName = "allIssuances.json";
 
