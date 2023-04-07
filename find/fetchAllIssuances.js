@@ -2,7 +2,7 @@ const fs = require("fs");
 
 (async () => {
 	const startBlock = 784361;
-	const endBlock = 784361;
+	const endBlock = 784368;
 	const concurrentFetches = 10;
 	const fileName = "allIssuances.json";
 	const resultsPerPage = 100;
