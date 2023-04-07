@@ -35,8 +35,9 @@ jobs:
 
       - name: Commit and push changes
         run: |
-          git config --global user.name "GitHub Action"
-          git config --global user.email "noreply@github.com"
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git add ./find/punksIssuances.json ./find/allIssuances.json ./find/fetchAllIssuances.js index.html
-          git commit -m "Update block"
-          git push
+          git commit -m "Update block"    
+          git remote set-url origin https://${{ secrets.GH_TOKEN }}@github.com/ygtdmn/stampunks-wallet-checker.git
+          git push origin main
