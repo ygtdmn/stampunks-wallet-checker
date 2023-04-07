@@ -83,20 +83,21 @@ form button:hover {
 	justify-content: center;
 	align-items: center;
 	padding: 10px;
-	position: sticky;
+	position: fixed;
 	bottom: 0;
 	width: 100%;
 	background-color: #4caf50;
 	border-radius: 5px;
 	color: #fff;
 	margin-top: 10px;
+	z-index: 1000;
 }
 
 .donate-github a {
 	display: inline-flex;
 	align-items: center;
 	text-decoration: none;
-	color: #E6E6FA;
+	color: #e6e6fa;
 	margin-right: 10px;
 }
 
@@ -105,7 +106,11 @@ form button:hover {
 }
 
 .form-description {
-  font-size: 1rem;
-  max-width: 800px;
-  margin: 0 auto;
+	font-size: 1rem;
+	max-width: 800px;
+	margin: 0 auto;
+}
+
+.container {
+	padding-bottom: 60px;
 }
