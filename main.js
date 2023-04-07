@@ -155,7 +155,7 @@ async function checkLockedStatus(nft, button, event) {
 function getTotalPunks(nfts) {
 	let totalPunks = 0;
 	nfts.forEach((nft) => {
-		totalPunks += Number(nft.quantity);
+		totalPunks += 1;
 	});
 	return totalPunks;
 }
