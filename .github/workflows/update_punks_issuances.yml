@@ -8,9 +8,6 @@ jobs:
   update-issuances:
     runs-on: ubuntu-latest
 
-    runs:
-      using: "node18"
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
