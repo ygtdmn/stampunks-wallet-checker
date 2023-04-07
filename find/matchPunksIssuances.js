@@ -6,6 +6,9 @@ const fs = require("fs");
 		fs.readFileSync("allIssuances.json", "utf-8")
 	);
 
+	// sort all issuances by tx index
+	allIssuances.sort((a, b) => a.tx_index - b.tx_index);
+
 	const punksIssuances = punks
 		.map((punk, index) => {
 			const punkDescription = `STAMP:${punk}`;
@@ -15,7 +18,7 @@ const fs = require("fs");
 					(issuance.description === punkDescription ||
 						issuance.description === punkDescriptionLower) &&
 					issuance.divisible === false &&
-					Number(issuance.quantity) == 1
+					Number(issuance.quantity) <= 1
 			);
 
 			if (matchingIssuance) {
