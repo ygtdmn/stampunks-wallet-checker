@@ -81,6 +81,12 @@ function displayLoadingBar() {
 	walletForm.parentNode.insertBefore(loadingBar, walletForm.nextSibling);
 }
 
+async function fetchStampData() {
+  const response = await fetch("find/stamp.json");
+  const data = await response.json();
+  return data;
+}
+
 function hideLoadingBar() {
 	const loadingBar = document.getElementById("loading-bar");
 	loadingBar.parentNode.removeChild(loadingBar);
@@ -93,26 +99,27 @@ async function fetchPunksIssuances() {
 }
 
 async function getNfts(walletAddress) {
-	const punksIssuances = await fetchPunksIssuances();
-	const url = `https://xchain.io/api/balances/${walletAddress}`;
-	const response = await fetch(url);
-	const data = await response.json();
-	console.log("Balances API response:", data);
+  const punksIssuances = await fetchPunksIssuances();
+  const stampData = await fetchStampData();
+  const url = `https://xchain.io/api/balances/${walletAddress}`;
+  const response = await fetch(url);
+  const data = await response.json();
+  console.log("Balances API response:", data);
 
-	let nfts = data.data.filter((asset) => {
-		return punksIssuances.some(
-			(punkIssuance) => punkIssuance.asset === asset.asset
-		);
-	});
+  let nfts = data.data.filter((asset) => {
+    return punksIssuances.some((punkIssuance) => punkIssuance.asset === asset.asset);
+  });
 
-	nfts = nfts.map((nft) => {
-		const punk = punksIssuances.find((punk) => punk.asset === nft.asset);
-		nft.punkId = punk.punkId;
-		nft.tx_hash = punk.tx_hash;
-		return nft;
-	});
+  nfts = nfts.map((nft) => {
+    const punk = punksIssuances.find((punk) => punk.asset === nft.asset);
+    const stamp = stampData.find((stamp) => stamp.asset === nft.asset);
+    nft.punkId = punk.punkId;
+    nft.tx_hash = punk.tx_hash;
+    nft.stampId = stamp ? stamp.stamp : null;
+    return nft;
+  });
 
-	return nfts;
+  return nfts;
 }
 
 function displayNfts(nfts) {
@@ -132,6 +139,10 @@ function displayNfts(nfts) {
 		punkId.target = "_blank";
 		punkId.classList.add("punk-id");
 
+		const stampId = document.createElement("p");
+    stampId.textContent = nft.stampId ? `Stamp ID: ${nft.stampId}` : "Stamp ID not found.";
+    stampId.classList.add("stamp-id");
+
 		const txHash = document.createElement("p");
 		txHash.textContent = `TX Hash: ${nft.tx_hash}`;
 		txHash.classList.add("tx-hash");
@@ -146,6 +157,7 @@ function displayNfts(nfts) {
 		nftWrapper.classList.add("nft-wrapper");
 		nftWrapper.appendChild(imgElement);
 		nftWrapper.appendChild(punkId);
+		nftWrapper.appendChild(stampId);
 		// nftWrapper.appendChild(txHash);
 		nftWrapper.appendChild(checkLockedBtn);
 
