@@ -77,7 +77,7 @@ function displayNfts(nfts) {
 		const imageBase64 = nft.description.replace(/STAMP\:/i, "");
 		const imgElement = document.createElement("img");
 		imgElement.src = `data:image/png;base64,${imageBase64}`;
-		imgElement.alt = `${nft.asset} - Quantity: ${nft.quantity}`;
+		imgElement.alt = `${nft.asset}`;
 		imgElement.classList.add("nft-image");
 
 		const punkId = document.createElement("a");
@@ -85,11 +85,6 @@ function displayNfts(nfts) {
 		punkId.href = `https://xchain.io/asset/${nft.asset}`;
 		punkId.target = "_blank";
 		punkId.classList.add("punk-id");
-
-		// Add Punk Quantity
-		const punkQuantity = document.createElement("p");
-		punkQuantity.textContent = `Quantity: ${nft.quantity}`;
-		punkQuantity.classList.add("punk-quantity");
 
 		const txHash = document.createElement("p");
 		txHash.textContent = `TX Hash: ${nft.tx_hash}`;
@@ -105,7 +100,6 @@ function displayNfts(nfts) {
 		nftWrapper.classList.add("nft-wrapper");
 		nftWrapper.appendChild(imgElement);
 		nftWrapper.appendChild(punkId);
-		nftWrapper.appendChild(punkQuantity); // Add Punk Quantity to the wrapper
 		// nftWrapper.appendChild(txHash);
 		nftWrapper.appendChild(checkLockedBtn);
 

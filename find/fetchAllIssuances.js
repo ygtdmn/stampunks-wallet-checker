@@ -1,7 +1,7 @@
 const fs = require("fs");
 
 (async () => {
-	const startBlock = 779652;
+	const startBlock = 784323;
 	let currentBlock = startBlock;
 	let allIssuances = [];
 
@@ -17,11 +17,11 @@ const fs = require("fs");
 
 		currentBlock++;
 
-		if (currentBlock > 784323) {
+		if (currentBlock > 784338) {
 			break;
 		}
 	}
 
-	fs.writeFileSync("allIssuances.json", JSON.stringify(allIssuances, null, 2));
+	fs.writeFileSync("allIssuances2.json", JSON.stringify(allIssuances, null, 2));
 	console.log("All issuances saved to allIssuances.json");
 })();
