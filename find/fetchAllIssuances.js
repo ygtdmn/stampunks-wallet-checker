@@ -1,15 +1,16 @@
 const fs = require("fs");
+const path = require("path");
 
 (async () => {
 	const startBlock = 784361;
 	const endBlock = 784368;
 	const concurrentFetches = 10;
-	const fileName = "allIssuances.json";
 	const resultsPerPage = 100;
 
 	// Read the existing data from the file
-	const existingData = fs.existsSync(fileName)
-		? JSON.parse(fs.readFileSync(fileName))
+	const allIssuancesPath = path.join(__dirname, "allIssuances.json");
+	const existingData = fs.existsSync(allIssuancesPath)
+		? JSON.parse(fs.readFileSync(allIssuancesPath, "utf-8"))
 		: [];
 
 	let allIssuances = existingData;
@@ -59,6 +60,6 @@ const fs = require("fs");
 			index === self.findIndex((i) => i.tx_hash === issuance.tx_hash)
 	);
 
-	fs.writeFileSync(fileName, JSON.stringify(uniqueIssuances, null, 2));
+	fs.writeFileSync(allIssuancesPath, JSON.stringify(uniqueIssuances, null, 2));
 	console.log("Updated issuances saved to allIssuances.json");
 })();
