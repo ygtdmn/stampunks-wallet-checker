@@ -1,0 +1,19 @@
+[
+  {
+    "asset": "A3601214742377612300",
+    "asset_longname": "",
+    "block_index": 783964,
+    "description": "STAMP:iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAl0lEQVR42mNgGAUUgP9QjEv8Px41eA3FZxA+w4my7D+FmIHWFtDcEsoNv72xAYzJsYBoQ3FYQnLyRDEMF6Y4iECGLMvTAWNkg2Fi5FjAgG4BiL40NwHD5SAxegYR8Rb8v6lGlOHkWsCAzwc4UhJFhR3VXU9OjqaOBW0RcnBMFQvwFAnUs4AISxgotoDcwo0cC6hbJ1PDAgCCwo+SyzKV0gAAAABJRU5ErkJggg==",
+    "divisible": false,
+    "fee_paid": "0.00000000",
+    "issuer": "1FDteVq73oNztMFSioB1vMe3vwhdqzTtrG",
+    "locked": false,
+    "quantity": "1",
+    "source": "1FDteVq73oNztMFSioB1vMe3vwhdqzTtrG",
+    "status": "valid",
+    "timestamp": 1680646497,
+    "transfer": false,
+    "tx_hash": "3b1ef8fbde62f7fe13a843fefee195699bd2624fe205c30d67cc64a057a1faeb",
+    "tx_index": 2286493
+  }
+]
