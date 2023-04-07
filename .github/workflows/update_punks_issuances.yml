@@ -38,7 +38,7 @@ jobs:
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git remote set-url origin https://${{ secrets.GITHUB_TOKEN }}@github.com/ygtdmn/stampunks-wallet-checker.git
+          git remote set-url origin https://${{ secrets.GH_PAT }}@github.com/ygtdmn/stampunks-wallet-checker.git
           git add ./find/punksIssuances.json ./find/allIssuances.json ./find/fetchAllIssuances.js index.html
           git commit -m "Update block"
           git push origin main
