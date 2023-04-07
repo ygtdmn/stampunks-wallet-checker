@@ -23,10 +23,10 @@ jobs:
           sed -i "s/const endBlock = .*/const endBlock = $LATEST_BLOCK;/" fetchAllIssuances.js
 
       - name: Fetch all issuances
-        run: node fetchAllIssuances.js
+        run: node ./find/fetchAllIssuances.js
 
       - name: Match punks issuances
-        run: node matchPunksIssuances.js
+        run: node ./find/matchPunksIssuances.js
 
       - name: Update Last Update Block in index.html
         run: |
