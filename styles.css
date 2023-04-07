@@ -1,103 +1,104 @@
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f0f2f5;
-  color: #333;
-  margin: 0;
-  padding: 0;
+	font-family: Arial, sans-serif;
+	background-color: #f0f2f5;
+	color: #333;
+	margin: 0;
+	padding: 0;
 }
 
 h1 {
-  text-align: center;
-  padding: 1rem;
-  background-color: #4caf50;
-  color: white;
-  margin-bottom: 2rem;
-  border-radius: 5px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+	text-align: center;
+	padding: 1rem;
+	background-color: #4caf50;
+	color: white;
+	margin-bottom: 2rem;
+	border-radius: 5px;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 
 form {
-  text-align: center;
-  margin-bottom: 1rem;
+	text-align: center;
+	margin-bottom: 1rem;
 }
 
 form input {
-  padding: 5px 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+	padding: 5px 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
 }
 
 form button {
-  padding: 5px 10px;
-  border: none;
-  background-color: #4caf50;
-  color: white;
-  border-radius: 5px;
-  margin-left: 5px;
-  cursor: pointer;
+	padding: 5px 10px;
+	border: none;
+	background-color: #4caf50;
+	color: white;
+	border-radius: 5px;
+	margin-left: 5px;
+	cursor: pointer;
 }
 
 form button:hover {
-  background-color: #43a047;
+	background-color: #43a047;
 }
 
 #nft-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
-  padding: 0 1rem;
-  margin-bottom: 2rem;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 1rem;
+	padding: 0 1rem;
+	margin-bottom: 2rem;
 }
 
 .nft-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #ffffff;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  padding: 1rem;
-  border-radius: 5px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: #ffffff;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+	padding: 1rem;
+	border-radius: 5px;
 }
 
 .nft-image {
-  width: 200px;
-  image-rendering: pixelated;
-  border-radius: 5px;
+	width: 200px;
+	image-rendering: pixelated;
+	border-radius: 5px;
 }
 
 .locked-text,
 .punk-id-text {
-  margin-top: 0.5rem;
-  font-size: 0.9rem;
-  font-weight: bold;
-  color: #333;
+	margin-top: 0.5rem;
+	font-size: 0.9rem;
+	font-weight: bold;
+	color: #333;
 }
 
 .check-locked-button {
-  margin-top: 0.5rem;
+	margin-top: 0.5rem;
 }
 
 .donate-github {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  background-color: #f9f9f9;
-  border-radius: 5px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 10px;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	background-color: #4caf50;
+	border-radius: 5px;
+	color: #fff;
 }
 
 .donate-github a {
-  display: inline-flex;
-  align-items: center;
-  text-decoration: none;
-  color: #555;
-  margin-right: 10px;
+	display: inline-flex;
+	align-items: center;
+	text-decoration: none;
+	color: #E6E6FA;
+	margin-right: 10px;
 }
 
 .donate-github a i {
-  margin-right: 5px;
+	margin-right: 5px;
 }
