@@ -17,6 +17,52 @@ document
 		hideLoadingBar();
 	});
 
+document
+	.getElementById("asset-form")
+	.addEventListener("submit", async (event) => {
+		event.preventDefault();
+		const assetId = document.getElementById("asset-id").value;
+		const submitButton = event.target.querySelector("button");
+		submitButton.disabled = true;
+
+		const punk = await getPunkByAssetId(assetId);
+		await displayPunkId(punk);
+
+		submitButton.disabled = false;
+	});
+
+async function getPunkByAssetId(assetId) {
+	const punksIssuances = await fetchPunksIssuances();
+	const punk = punksIssuances.find(
+		(punkIssuance) => punkIssuance.asset === assetId
+	);
+	return punk ? punk : null;
+}
+
+async function displayPunkId(punk) {
+	const punkIdResultElement = document.getElementById("punk-id-result");
+	const punkImageElement = document.getElementById("punk-image");
+	const punkIssuerElement = document.getElementById("punk-issuer");
+
+	if (punk.punkId) {
+		const imageBase64 = punk.description.replace("STAMP:", "");
+		punkImageElement.innerHTML = `<img src="data:image/png;base64,${imageBase64}" alt="${punk.asset} - Punk ID: ${punk.punkId}" class="nft-image" />`;
+		const issuer = punk.issuer;
+		punkIssuerElement.textContent = issuer
+			? `Issuer: ${issuer}`
+			: "Issuer not found.";
+		punkIdResultElement.innerHTML =
+			`<a href="https://xchain.io/asset/` +
+			punk.asset +
+			`" target="_blank">Punk ID: ${punk.punkId}</a>`;
+	} else {
+		punkIdResultElement.textContent =
+			"No valid Punk ID found for the given Asset ID.";
+		punkImageElement.innerHTML = "";
+		punkIssuerElement.textContent = "";
+	}
+}
+
 function displayLoadingBar() {
 	const loadingBar = document.createElement("div");
 	loadingBar.classList.add("progress", "my-3");

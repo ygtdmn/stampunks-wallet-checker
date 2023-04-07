@@ -83,7 +83,7 @@ form button:hover {
 	justify-content: center;
 	align-items: center;
 	padding: 10px;
-	position: fixed;
+	position: sticky;
 	bottom: 0;
 	width: 100%;
 	background-color: #4caf50;
@@ -101,4 +101,10 @@ form button:hover {
 
 .donate-github a i {
 	margin-right: 5px;
+}
+
+.form-description {
+  font-size: 1rem;
+  max-width: 800px;
+  margin: 0 auto;
 }

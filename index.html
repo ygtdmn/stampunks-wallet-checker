@@ -24,7 +24,13 @@
 	</head>
 	<body>
 		<h1>Stampunks!</h1>
-		<div class="container mt-5">
+		<div style="min-height: 100vh" class="container mt-5">
+			<div class="form-description text-center mb-2">
+				<p>
+					Enter a wallet address to check the owned Stampunk NFTs, their Punk
+					IDs, and locked status.
+				</p>
+			</div>
 			<form id="wallet-form">
 				<div class="mb-3">
 					<label for="wallet-address" class="form-label">Wallet Address:</label>
@@ -35,14 +41,36 @@
 							id="wallet-address"
 							required
 						/>
-						<button type="submit" class="btn btn-success">Submit</button>
+						<button type="submit" class="btn btn-success">See Punks</button>
 					</div>
 				</div>
 			</form>
+
 			<div id="total-punks" class="mt-3"></div>
 			<div id="nft-container"></div>
+
+			<div class="form-description text-center mb-2">
+				<p>
+					or enter an asset ID to get the corresponding Punk ID, Punk image, and
+					issuer information.
+				</p>
+			</div>
+			<form id="asset-form" class="mt-4">
+				<div class="mb-3">
+					<label for="asset-id" class="form-label">Asset ID:</label>
+					<div class="input-group">
+						<input type="text" class="form-control" id="asset-id" required />
+						<button type="submit" class="btn btn-primary">Get Punk ID</button>
+					</div>
+				</div>
+			</form>
+
+			<div id="punk-image" class="mt-3"></div>
+			<div id="punk-issuer" class="mt-3"></div>
+			<div id="punk-id-result" class="mt-3"></div>
 		</div>
 		<div class="donate-github">
+			<span style="margin-right: 5px">Last Update Block: 784347</span>
 			<a
 				href="https://github.com/ygtdmn/stampunks-wallet-checker"
 				target="_blank"
@@ -54,7 +82,7 @@
 				target="_blank"
 				>Twitter</a
 			>
-			Donate: 1218wSvtQmAxGEEQ21hdV2nvmScb5jtPrN
+			<span>Donate: 1218wSvtQmAxGEEQ21hdV2nvmScb5jtPrN</span>
 		</div>
 
 		<script src="main.js"></script>
