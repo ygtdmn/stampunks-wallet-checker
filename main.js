@@ -10,6 +10,9 @@ document
 		const nfts = await getNfts(walletAddress);
 		displayNfts(nfts);
 
+		const totalPunks = getTotalPunks(nfts);
+		displayTotalPunks(totalPunks);
+
 		submitButton.disabled = false;
 		hideLoadingBar();
 	});
@@ -83,6 +86,11 @@ function displayNfts(nfts) {
 		punkId.target = "_blank";
 		punkId.classList.add("punk-id");
 
+		// Add Punk Quantity
+		const punkQuantity = document.createElement("p");
+		punkQuantity.textContent = `Quantity: ${nft.quantity}`;
+		punkQuantity.classList.add("punk-quantity");
+
 		const txHash = document.createElement("p");
 		txHash.textContent = `TX Hash: ${nft.tx_hash}`;
 		txHash.classList.add("tx-hash");
@@ -97,6 +105,7 @@ function displayNfts(nfts) {
 		nftWrapper.classList.add("nft-wrapper");
 		nftWrapper.appendChild(imgElement);
 		nftWrapper.appendChild(punkId);
+		nftWrapper.appendChild(punkQuantity); // Add Punk Quantity to the wrapper
 		// nftWrapper.appendChild(txHash);
 		nftWrapper.appendChild(checkLockedBtn);
 
@@ -147,4 +156,26 @@ async function checkLockedStatus(nft, button, event) {
 
 	button.disabled = false;
 	loader.remove();
+}
+
+function getTotalPunks(nfts) {
+	let totalPunks = 0;
+	nfts.forEach((nft) => {
+		totalPunks += Number(nft.quantity);
+	});
+	return totalPunks;
+}
+
+function displayTotalPunks(totalPunks) {
+	const totalPunksElement = document.getElementById("total-punks");
+	if (totalPunksElement) {
+		totalPunksElement.textContent = `Total Punks: ${totalPunks}`;
+	} else {
+		const totalPunksDiv = document.createElement("div");
+		totalPunksDiv.id = "total-punks";
+		totalPunksDiv.textContent = `Total Punks: ${totalPunks}`;
+		totalPunksDiv.classList.add("mt-3");
+		const nftContainer = document.getElementById("nft-container");
+		nftContainer.parentNode.insertBefore(totalPunksDiv, nftContainer);
+	}
 }

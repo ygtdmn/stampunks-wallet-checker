@@ -17,7 +17,7 @@ const fs = require("fs");
 
 		currentBlock++;
 
-		if (currentBlock > 784315) {
+		if (currentBlock > 784323) {
 			break;
 		}
 	}
