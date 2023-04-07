@@ -20,7 +20,7 @@ jobs:
       - name: Update endBlock in fetchAllIssuances.js
         run: |
           LATEST_BLOCK=$(node -e "const getLatestBitcoinBlock = require('./find/getLatestBitcoinBlock.js'); getLatestBitcoinBlock().then(block => console.log(block));")
-          sed -i "s/const endBlock = .*/const endBlock = $LATEST_BLOCK;/" fetchAllIssuances.js
+          sed -i "s/const endBlock = .*/const endBlock = $LATEST_BLOCK;/" ./find/fetchAllIssuances.js
 
       - name: Fetch all issuances
         run: node ./find/fetchAllIssuances.js
