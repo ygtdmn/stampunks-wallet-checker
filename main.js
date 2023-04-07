@@ -74,7 +74,9 @@ function displayNfts(nfts) {
 	nftContainer.innerHTML = "";
 
 	nfts.forEach((nft) => {
-		const imageBase64 = nft.description.replace("STAMP:", "");
+		const imageBase64 = nft.description.startsWith("STAMP:")
+			? nft.description.replace("STAMP:", "")
+			: nft.description.replace("stamp:", "");
 		const imgElement = document.createElement("img");
 		imgElement.src = `data:image/png;base64,${imageBase64}`;
 		imgElement.alt = `${nft.asset} - Quantity: ${nft.quantity}`;
