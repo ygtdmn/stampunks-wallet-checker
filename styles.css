@@ -89,6 +89,7 @@ form button:hover {
 	background-color: #4caf50;
 	border-radius: 5px;
 	color: #fff;
+	margin-top: 10px;
 }
 
 .donate-github a {
