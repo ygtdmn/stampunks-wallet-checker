@@ -3,7 +3,7 @@ const path = require("path");
 
 (async () => {
 	const startBlock = 784361;
-	const endBlock = 801114;
+	const endBlock = 801115;
 	const concurrentFetches = 10;
 	const resultsPerPage = 100;
 
